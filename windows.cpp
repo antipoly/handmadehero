@@ -53,7 +53,7 @@ void Win32InitDSound(HWND Window, int32_t SamplesPerSecond, int32_t BufferSize)
         {
           if (SUCCEEDED(PrimaryBuffer->SetFormat(&WaveFormat)))
           {
-            OutputDebugString("Primary buffer format was set.\n");
+            OutputDebugStringA("Primary buffer format was set.\n");
           }
           else
           {
@@ -74,7 +74,7 @@ void Win32InitDSound(HWND Window, int32_t SamplesPerSecond, int32_t BufferSize)
 
       if (SUCCEEDED(DirectSound->CreateSoundBuffer(&SecBufferDescription, &GlobalSecondaryBuffer, 0)))
       {
-        OutputDebugString("Secondary buffer created.\n");
+        OutputDebugStringA("Secondary buffer created.\n");
       }
       else
       {
@@ -164,14 +164,14 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
     int Height = ClientRect.bottom - ClientRect.top;
     Win32ResizeDIBSection(&GlobalBackBuffer, Width, Height);
 
-    OutputDebugString("WM_SIZE\n");
+    OutputDebugStringA("WM_SIZE\n");
   }
   break;
 
   case WM_DESTROY:
   {
     Running = false;
-    OutputDebugString("WM_DESTROY\n");
+    OutputDebugStringA("WM_DESTROY\n");
   }
   break;
 
@@ -186,7 +186,7 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
 
     // if (WasDown != IsDown)
     // {
-    // OutputDebugString("WM_KEYDOWN\n")
+    // OutputDebugStringA("WM_KEYDOWN\n")
     // std::cout << "WasDown: " << WasDown << "\n";
     // std::cout << "IsDown: " << IsDown << "\n";
 
@@ -195,51 +195,51 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
       if (VKCode == 'W')
       {
         std::cout << "W\n";
-        OutputDebugString("W\n");
+        OutputDebugStringA("W\n");
       }
       else if (VKCode == 'A')
       {
-        OutputDebugString("A\n");
+        OutputDebugStringA("A\n");
       }
       else if (VKCode == 'S')
       {
-        OutputDebugString("S\n");
+        OutputDebugStringA("S\n");
       }
       else if (VKCode == 'D')
       {
-        OutputDebugString("D\n");
+        OutputDebugStringA("D\n");
       }
       else if (VKCode == 'Q')
       {
-        OutputDebugString("Q\n");
+        OutputDebugStringA("Q\n");
       }
       else if (VKCode == 'E')
       {
-        OutputDebugString("E\n");
+        OutputDebugStringA("E\n");
       }
       else if (VKCode == VK_UP)
       {
-        OutputDebugString("UP\n");
+        OutputDebugStringA("UP\n");
       }
       else if (VKCode == VK_DOWN)
       {
-        OutputDebugString("DOWN\n");
+        OutputDebugStringA("DOWN\n");
       }
       else if (VKCode == VK_LEFT)
       {
-        OutputDebugString("LEFT\n");
+        OutputDebugStringA("LEFT\n");
       }
       else if (VKCode == VK_RIGHT)
       {
-        OutputDebugString("RIGHT\n");
+        OutputDebugStringA("RIGHT\n");
       }
       else if (VKCode == VK_ESCAPE)
       {
-        OutputDebugString("ESCAPE\n");
+        OutputDebugStringA("ESCAPE\n");
       }
       else if (VKCode == VK_SPACE)
       {
-        OutputDebugString("SPACE\n");
+        OutputDebugStringA("SPACE\n");
       }
     }
 
@@ -254,13 +254,13 @@ LRESULT CALLBACK MainWindowCallback(HWND Window, UINT Message, WPARAM WParam, LP
   case WM_CLOSE:
   {
     Running = false;
-    OutputDebugString("WM_CLOSE\n");
+    OutputDebugStringA("WM_CLOSE\n");
   }
   break;
 
   case WM_ACTIVATEAPP:
   {
-    OutputDebugString("WM_ACTIVATEAPP\n");
+    OutputDebugStringA("WM_ACTIVATEAPP\n");
   }
   break;
 
@@ -301,7 +301,7 @@ int WinMain(HINSTANCE instance, HINSTANCE prevInstance, LPSTR commandLine, int s
 
   if (RegisterClass(&WindowClass))
   {
-    OutputDebugString("Window Class Registered\n");
+    OutputDebugStringA("Window Class Registered\n");
     HWND Window = CreateWindowEx(
         0,
         WindowClass.lpszClassName,
